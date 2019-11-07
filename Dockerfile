@@ -10,26 +10,26 @@ RUN apt-get update \
   texlive-full imagemagick libimage-magick-perl make javacc\
   && rm -rf /var/lib/apt/lists/*
 
-# Make a directory for latexml
-RUN mkdir -p /opt/latexml
+# Make a directory for LaTeXML
+RUN mkdir -p /opt/LaTeXML
 
 # Add all of the source files
-ADD latexml/bin/            /opt/latexml/bin
-#ADD latexml/doc/            /opt/latexml/doc/
-ADD latexml/lib/            /opt/latexml/lib 
-#ADD latexml/release/        /opt/latexml/release/
-ADD latexml/t/              /opt/latexml/t/
-ADD latexml/tools/          /opt/latexml/tools/
-#ADD latexml/Changes         /opt/latexml/Changes
-#ADD latexml/INSTALL         /opt/latexml/INSTALL
-#ADD latexml/INSTALL.SKIP    /opt/latexml/INSTALL.SKIP
-ADD latexml/LICENSE         /opt/latexml/LICENSE
-ADD latexml/Makefile.PL     /opt/latexml/Makefile.PL
-#ADD latexml/MANIFEST        /opt/latexml/MANIFEST
-#ADD latexml/MANIFEST.SKIP   /opt/latexml/MANIFEST.SKIP
-#ADD latexml/manual.pdf      /opt/latexml/manual.pdf
-#ADD latexml/README.pod      /opt/README.pod
+ADD LaTeXML/bin/            /opt/LaTeXML/bin
+#ADD LaTeXML/doc/            /opt/LaTeXML/doc/
+ADD LaTeXML/lib/            /opt/LaTeXML/lib 
+#ADD LaTeXML/release/        /opt/LaTeXML/release/
+ADD LaTeXML/t/              /opt/LaTeXML/t/
+ADD LaTeXML/tools/          /opt/LaTeXML/tools/
+#ADD LaTeXML/Changes         /opt/LaTeXML/Changes
+#ADD LaTeXML/INSTALL         /opt/LaTeXML/INSTALL
+#ADD LaTeXML/INSTALL.SKIP    /opt/LaTeXML/INSTALL.SKIP
+ADD LaTeXML/LICENSE         /opt/LaTeXML/LICENSE
+ADD LaTeXML/Makefile.PL     /opt/LaTeXML/Makefile.PL
+#ADD LaTeXML/MANIFEST        /opt/LaTeXML/MANIFEST
+#ADD LaTeXML/MANIFEST.SKIP   /opt/LaTeXML/MANIFEST.SKIP
+#ADD LaTeXML/manual.pdf      /opt/LaTeXML/manual.pdf
+#ADD LaTeXML/README.pod      /opt/README.pod
 
-WORKDIR /opt/latexml
+WORKDIR /opt/LaTeXML
 
 RUN perl Makefile.PL && make && make install

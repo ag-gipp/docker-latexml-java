@@ -35,42 +35,17 @@
 
 
 # We start from alpine linux 3.10
-FROM alpine:3.10
+FROM openjdk:12
 
 # Install the dependencies
-RUN apk add --no-cache \
-    db-dev \
-    gcc \
-    libc-dev \
-    libgcrypt \
-    libgcrypt-dev \
-    libxml2 \
-    libxml2-dev \
-    libxslt \
-    libxslt-dev \
-    make \
-    perl \
-    perl-dev \
-    perl-utils \
-    wget \
-    zlib \
-    zlib-dev
-
-# Configure TeXLive Support
-# Set to "no" to disable, "yes" to enable
-ARG WITH_TEXLIVE="yes"
-
-# Configure if we test during the build
-ARG WITH_TESTS="yes"
-
-# Install TeXLive if not disabled
-RUN [ "$WITH_TEXLIVE" == "no" ] || (\
-           apk add --no-cache -U poppler harfbuzz-icu zziplib texlive-full \
-        && ln -s /usr/bin/mktexlsr /usr/bin/mktexlsr.pl \
-    )
-
-# Install cpanminus
-RUN apk add --no-cache -U perl-app-cpanminus
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+  libarchive-zip-perl libfile-which-perl libimage-size-perl  \
+  libio-string-perl libjson-xs-perl libtext-unidecode-perl \
+  libparse-recdescent-perl liburi-perl libuuid-tiny-perl libwww-perl \
+  libxml2 libxml-libxml-perl libxslt1.1 libxml-libxslt-perl  \
+  texlive-latex-base imagemagick libimage-magick-perl \
+  && rm -rf /var/lib/apt/lists/*
 
 # Make a directory for latexml
 RUN mkdir -p /opt/latexml
@@ -92,7 +67,6 @@ ADD Makefile.PL     /opt/latexml/Makefile.PL
 #ADD manual.pdf      /opt/latexml/manual.pdf
 #ADD README.pod      /opt/README.pod
 
-# Installing  via cpanm (with or without tests)
 WORKDIR /opt/latexml
 
-RUN if [ "$WITH_TESTS" == "no" ] ; then cpanm --notest . ; else cpanm . ; fi
+RUN perl Makefile.PL && make && make install

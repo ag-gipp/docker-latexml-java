@@ -14,21 +14,21 @@ RUN apt-get update \
 RUN mkdir -p /opt/latexml
 
 # Add all of the source files
-ADD bin/            /opt/latexml/bin
-#ADD doc/            /opt/latexml/doc/
-ADD lib/            /opt/latexml/lib 
-#ADD release/        /opt/latexml/release/
-ADD t/              /opt/latexml/t/
-ADD tools/          /opt/latexml/tools/
-#ADD Changes         /opt/latexml/Changes
-#ADD INSTALL         /opt/latexml/INSTALL
-#ADD INSTALL.SKIP    /opt/latexml/INSTALL.SKIP
-ADD LICENSE         /opt/latexml/LICENSE
-ADD Makefile.PL     /opt/latexml/Makefile.PL
-#ADD MANIFEST        /opt/latexml/MANIFEST
-#ADD MANIFEST.SKIP   /opt/latexml/MANIFEST.SKIP
-#ADD manual.pdf      /opt/latexml/manual.pdf
-#ADD README.pod      /opt/README.pod
+ADD latexml/bin/            /opt/latexml/bin
+#ADD latexml/doc/            /opt/latexml/doc/
+ADD latexml/lib/            /opt/latexml/lib 
+#ADD latexml/release/        /opt/latexml/release/
+ADD latexml/t/              /opt/latexml/t/
+ADD latexml/tools/          /opt/latexml/tools/
+#ADD latexml/Changes         /opt/latexml/Changes
+#ADD latexml/INSTALL         /opt/latexml/INSTALL
+#ADD latexml/INSTALL.SKIP    /opt/latexml/INSTALL.SKIP
+ADD latexml/LICENSE         /opt/latexml/LICENSE
+ADD latexml/Makefile.PL     /opt/latexml/Makefile.PL
+#ADD latexml/MANIFEST        /opt/latexml/MANIFEST
+#ADD latexml/MANIFEST.SKIP   /opt/latexml/MANIFEST.SKIP
+#ADD latexml/manual.pdf      /opt/latexml/manual.pdf
+#ADD latexml/README.pod      /opt/README.pod
 
 WORKDIR /opt/latexml
 

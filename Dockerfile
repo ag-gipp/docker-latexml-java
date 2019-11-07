@@ -35,7 +35,7 @@
 
 
 # We start from alpine linux 3.10
-FROM openjdk:12
+FROM openjdk:13-jdk-buster
 
 # Install the dependencies
 RUN apt-get update \
@@ -44,7 +44,7 @@ RUN apt-get update \
   libio-string-perl libjson-xs-perl libtext-unidecode-perl \
   libparse-recdescent-perl liburi-perl libuuid-tiny-perl libwww-perl \
   libxml2 libxml-libxml-perl libxslt1.1 libxml-libxslt-perl  \
-  texlive-latex-base imagemagick libimage-magick-perl \
+  texlive-latex-base imagemagick libimage-magick-perl make \
   && rm -rf /var/lib/apt/lists/*
 
 # Make a directory for latexml

@@ -7,7 +7,7 @@ RUN apt-get update \
   libio-string-perl libjson-xs-perl libtext-unidecode-perl \
   libparse-recdescent-perl liburi-perl libuuid-tiny-perl libwww-perl \
   libxml2 libxml-libxml-perl libxslt1.1 libxml-libxslt-perl  \
-  texlive-full imagemagick libimage-magick-perl make javacc\
+  texlive-full imagemagick libimage-magick-perl perl-doc libtemplate-perl make javacc\
   && rm -rf /var/lib/apt/lists/*
 
 # Make a directory for LaTeXML
